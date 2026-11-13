@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScamShield-AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="site-header">
+
+        <a class="brand" href="#">
+            <svg class="brand-mark" viewBox="0 0 24 28">
+                <path d="M12 1.8 21 5v7.1c0 6.1-3.8 10.7-9 13.1-5.2-2.4-9-7-9-13.1V5l9-3.2Z"
+                    fill="none" stroke="currentColor" stroke-width="2.1"/>
+            </svg>
+            <span class="brand-name" data-value="ScamShield-AI">ScamShield-AI</span>
+        </a>
+
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="navigation">
+            <a href="#why-us">Why ScamShield?</a>
+            <a href="#what-we-provide">What We Provide</a>
+            <a href="#our-idea">Our Idea</a>
+            <a href="#feedback">Feedback</a>
+            <span class="nav-auth" aria-label="Account actions">
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('signup') }}">Sign Up</a>
+            </span>
+        </nav>
+
+    </header>
+
+    <!-- Hero Section -->
+    <main id="home">
+
+        <section class="hero">
+
+            <div class="hero-copy">
+
+                <span class="eyebrow">Advanced Cybersecurity</span>
+
+                <h1>
+                    ScamShield-AI:
+                    <span>Stay Safe</span>
+                    From Online Threats
+                </h1>
+
+                <p>
+                    Detect and learn about phishing links in real-time.
+                    Our advanced AI helps you identify threats before
+                    they compromise your security.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="{{ url_for('login') }}" class="button button-primary">
+                        Login
+                    </a>
+
+                    <a href="{{ url_for('signup') }}" class="button button-outline">
+                        Sign Up
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Features -->
+            <div class="feature-panel">
+
+                <div class="feature-card">
+                    <svg class="feature-icon cyan" viewBox="0 0 24 24">
+                        <path d="M12 2 20 5v6.3c0 5.2-3.3 9.2-8 11.4-4.7-2.2-8-6.2-8-11.4V5l8-3Z"/>
+                    </svg>
+                    <span>Real-time Protection</span>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon blue" viewBox="0 0 24 24">
+                        <rect x="3" y="10" width="18" height="12" rx="2"/>
+                        <path d="M7 10V7a5 5 0 0 1 10 0v3"/>
+                    </svg>
+                    <span>Secure Browsing</span>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon purple" viewBox="0 0 24 24">
+                        <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    <span>Threat Detection</span>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon yellow" viewBox="0 0 24 24">
+                        <path d="M10.3 3.8 1.9 18.2A2 2 0 0 0 3.6 21h16.8a2 2 0 0 0 1.7-2.8L13.7 3.8a2 2 0 0 0-3.4 0Z"/>
+                        <path d="M12 9v5m0 3h.01"/>
+                    </svg>
+                    <span>Risk Analysis</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Why ScamShield-AI -->
+        <section class="story-section" id="why-us">
+            <div class="section-heading">
+                <span class="eyebrow">Why ScamShield-AI?</span>
+                <h2>One careful click can protect your digital life.</h2>
+                <p>
+                    Online scams are becoming more convincing every day. ScamShield-AI
+                    is designed to give people a simple, reliable moment of confidence
+                    before they open a suspicious link or share personal information.
+                </p>
+            </div>
+
+            <div class="story-grid">
+                <article class="story-card">
+                    <span class="story-number">01</span>
+                    <h3>Prevention before damage</h3>
+                    <p>Check a link before it leads to a fake login page, malware, or a financial scam.</p>
+                </article>
+                <article class="story-card">
+                    <span class="story-number">02</span>
+                    <h3>Security for everyone</h3>
+                    <p>Clear language and practical guidance make online safety easier for every user.</p>
+                </article>
+                <article class="story-card">
+                    <span class="story-number">03</span>
+                    <h3>Learn while you protect</h3>
+                    <p>Understand warning signs so you can make safer decisions even beyond this tool.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- What We Provide -->
+        <section class="story-section provide-section" id="what-we-provide">
+            <div class="section-heading">
+                <span class="eyebrow">What We Provide</span>
+                <h2>Simple tools for smarter online decisions.</h2>
+            </div>
+
+            <div class="service-list">
+                <div class="service-item">
+                    <span class="service-icon">↗</span>
+                    <div>
+                        <h3>URL risk scanning</h3>
+                        <p>Analyze suspicious links and highlight potential phishing or scam indicators.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">✓</span>
+                    <div>
+                        <h3>Actionable explanations</h3>
+                        <p>Get understandable safety guidance instead of a confusing technical warning.</p>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <span class="service-icon">i</span>
+                    <div>
+                        <h3>Cybersecurity education</h3>
+                        <p>Build awareness of phishing, impersonation, urgency, and other scam patterns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Idea -->
+        <section class="idea-section" id="our-idea">
+            <div class="idea-content">
+                <span class="eyebrow">How the Idea Began</span>
+                <h2>Built from a real-world problem.</h2>
+                <p>
+                    The idea for ScamShield-AI came from seeing how easily a realistic message
+                    can make someone click first and think later. We imagined a friendly digital
+                    shield that helps people pause, check, and understand the risk in real time.
+                </p>
+                <p>
+                    Our goal is not only to detect threats, but to turn every scan into a small
+                    lesson that helps people feel more confident online.
+                </p>
+            </div>
+            <div class="idea-quote">
+                <span>Our mission</span>
+                <strong>Make online safety clear, accessible, and proactive.</strong>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer" id="feedback">
+        <div class="footer-content">
+            <div class="footer-intro">
+                <span class="eyebrow">We Value Your Feedback</span>
+                <h2>Help us make ScamShield-AI better.</h2>
+                <p>
+                    Share your experience, report a problem, or tell us what would make
+                    online safety easier for you.
+                </p>
+                <a class="gmail-link" href="mailto:scamshieldai@gmail.com">
+                    <span class="gmail-icon">@</span>
+                    aniket.singhh23@gmail.com
+                </a>
+            </div>
+
+            <form class="feedback-form" id="feedbackForm">
+                <label for="feedbackEmail">Your email</label>
+                <input type="email" id="feedbackEmail" placeholder="you@example.com" required>
+
+                <label for="feedbackMessage">Your feedback</label>
+                <textarea id="feedbackMessage" rows="5" placeholder="Tell us what you think..." required></textarea>
+
+                <button class="feedback-button" type="submit">Send Feedback</button>
+                <p class="feedback-status" id="feedbackStatus" aria-live="polite"></p>
+            </form>
+        </div>
+        <p class="footer-bottom">© 2026 ScamShield-AI. Stay alert. Stay protected.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}" defer></script>
+
+</body>
+</html>

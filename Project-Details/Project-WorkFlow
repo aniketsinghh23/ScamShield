@@ -1,0 +1,29 @@
+          USER
+            |
+            v
+     HTML / CSS / JS
+            |
+            v
+       FLASK SERVER
+            |
+            v
+      INPUT VALIDATION
+            |
+            v
+      DETECTION ENGINE
+         /       \
+        /         \
+   RULE ENGINE   ML MODEL
+        \         /
+         \       /
+            |
+            v
+       RISK ANALYSIS
+            |
+       +----+-----+
+       |          |
+       v          v
+    DATABASE   RESULT
+       |
+       v
+  ADMIN DASHBOARD

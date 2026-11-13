@@ -1,0 +1,16 @@
+# Technology Stack
+
+We'll use tools that are beginner-friendly while also teaching industry-relevant skills.
+
+| Component        | Technology             | Why We Need It                    |
+|---               |---                     |---                                |
+| Programming      | Python 3               | Main programming language         |
+| Backend          | Flask                  | Handles application logic         |
+| Frontend         | HTML, CSS, JavaScript  | Builds the website                |
+| Database         | SQLite                 | Stores user reports               |
+| Database access  | SQLAlchemy             | Connects Python to the database   |
+| Data processing  | Pandas                 | Processes datasets                |
+| Machine learning | Scikit-learn           | Builds the detection model        |
+| Visualization    | Chart.js               | Displays analytics                |
+| Version control  | Git + GitHub           | Tracks development                |
+| Deployment       | Render                 | Publishes the application         |

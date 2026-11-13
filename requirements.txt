@@ -1,0 +1,16 @@
+Flask
+Flask-Login
+Flask-SQLAlchemy
+Flask-Limiter
+redis
+Flask-WTF
+Flask-Talisman
+gunicorn
+Authlib
+requests
+pandas
+scikit-learn
+joblib
+kagglehub
+pip-audit
+python-dotenv

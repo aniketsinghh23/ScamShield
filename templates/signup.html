@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Sign Up | ScamShield-AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="login-page">
+    <a class="login-back-link" href="{{ url_for('home') }}">← Back to ScamShield-AI</a>
+
+    <main class="login-shell signup-shell">
+        <section class="login-visual" aria-label="ScamShield-AI protection">
+            <div class="login-orbit orbit-one"></div>
+            <div class="login-orbit orbit-two"></div>
+            <div class="guardian-bot" aria-hidden="true">
+                <div class="bot-antenna"></div>
+                <div class="bot-head">
+                    <span class="bot-eye"></span>
+                    <span class="bot-eye"></span>
+                    <span class="bot-mouth"></span>
+                </div>
+                <div class="bot-body">
+                    <span class="bot-shield">✓</span>
+                </div>
+                <div class="bot-arm bot-arm-left"></div>
+                <div class="bot-arm bot-arm-right"></div>
+            </div>
+            <span class="visual-label">Start your safer online journey</span>
+            <h1>Build your <span>digital shield.</span></h1>
+            <p>Create your free account and make every online decision with more confidence.</p>
+        </section>
+
+        <section class="login-card">
+            <div class="login-card-heading">
+                <span class="eyebrow">Join the shield</span>
+                <h2>Create your account</h2>
+                <p>Set up your personal ScamShield-AI safety space.</p>
+            </div>
+
+            <form class="login-form" id="signupForm">
+                <label for="signupName">Full name</label>
+                <input type="text" id="signupName" autocomplete="name" placeholder="Your name" required>
+
+                <label for="signupEmail">Email address</label>
+                <input type="email" id="signupEmail" autocomplete="email" placeholder="you@example.com" required>
+
+                <label for="signupPassword">Create a password</label>
+                <div class="password-field">
+                    <input type="password" id="signupPassword" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" required>
+                    <button class="password-toggle" type="button" aria-label="Show password">Show</button>
+                </div>
+
+                <label class="remember-option">
+                    <input type="checkbox" id="signupTerms" required>
+                    <span>I agree to the ScamShield-AI terms and privacy policy.</span>
+                </label>
+
+                <button class="login-submit" type="submit">Create my shield <span>→</span></button>
+                <p class="login-status" id="signupStatus" aria-live="polite"></p>
+            </form>
+
+            <div class="auth-divider"><span>or</span></div>
+            <a class="google-button" href="{{ url_for('google_login') }}">
+                <span class="google-icon" aria-hidden="true">G</span>
+                Continue with Google
+            </a>
+
+            <p class="login-signup">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/signup.js') }}" defer></script>
+</body>
+</html>

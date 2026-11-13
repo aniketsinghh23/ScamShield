@@ -1,0 +1,14 @@
+Remaining production gaps
+These are not current test failures, but should be addressed before a public launch:
+
+No /api/health health-check endpoint.
+Database schema changes still use manual ALTER TABLE; proper migrations are needed.
+SQLite is not ideal for multi-worker production.
+Redis must be provisioned and tested in the deployment environment.
+Google OAuth has not been tested with real Google credentials.
+External threat APIs need live production testing and monitoring.
+ML dataset is small and model quality is limited; current F1 is approximately 0.57.
+No automated browser/UI integration tests.
+Admin features are not implemented.
+Production logging, backups, monitoring, and rollback procedures are still missing.
+There is also one expected warning from Flask-Login about deprecated datetime.utcnow() inside the dependency.

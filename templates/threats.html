@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtime Threat Data | ScamShield-AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page threats-page">
+    <header class="dashboard-header">
+        <a class="brand" href="{{ url_for('dashboard') }}">
+            <svg class="brand-mark" viewBox="0 0 24 28" aria-hidden="true">
+                <path d="M12 1.8 21 5v7.1c0 6.1-3.8 10.7-9 13.1-5.2-2.4-9-7-9-13.1V5l9-3.2Z"
+                    fill="none" stroke="currentColor" stroke-width="2.1"/>
+            </svg>
+            <span class="brand-name">ScamShield-AI</span>
+        </a>
+        <a class="dashboard-logout" href="{{ url_for('dashboard') }}">Back to dashboard</a>
+    </header>
+
+    <main class="threats-main">
+        <header class="threats-heading">
+            <span class="eyebrow">Realtime data</span>
+            <h1>Global threat intelligence</h1>
+            <p>
+                Live breach, ransomware, actor, and geographic data from Recent Breaches.
+                Figures are loaded from the API and are not placeholders.
+            </p>
+            <p class="threats-meta" id="threatsMeta">Loading realtime data...</p>
+            <a class="threat-source-link" href="https://recentbreaches.com/developers" target="_blank" rel="noreferrer">
+                Data source and attribution
+            </a>
+        </header>
+
+        <p class="threats-error" id="threatsError" role="alert" hidden></p>
+
+        <section class="threat-stats" aria-label="Realtime threat summary">
+            <article class="threat-stat">
+                <span>Threat index today</span>
+                <strong id="threatIndex">—</strong>
+            </article>
+            <article class="threat-stat">
+                <span>Incidents in 24 hours</span>
+                <strong id="threat24Hours">—</strong>
+            </article>
+            <article class="threat-stat">
+                <span>Ransomware claims in 7 days</span>
+                <strong id="threatRansomware">—</strong>
+            </article>
+            <article class="threat-stat">
+                <span>Records leaked in 7 days</span>
+                <strong id="threatRecords">—</strong>
+            </article>
+        </section>
+
+        <section class="threat-map-card">
+            <div class="threat-card-heading">
+                <h2>Global breach activity</h2>
+                <span>Targets and estimated origins · 28 days</span>
+            </div>
+            <iframe
+                src="https://recentbreaches.com/embed/breach-globe?theme=light&mode=standard&window=28d"
+                title="Recent Breaches global breach map"
+                loading="lazy"
+            ></iframe>
+            <p class="threat-disclaimer">
+                Geographic origins are attribution estimates, not confirmed attack-source locations.
+            </p>
+        </section>
+
+        <section class="threat-chart-grid" aria-label="Realtime threat charts">
+            <article class="threat-chart-card">
+                <div class="threat-card-heading">
+                    <h2>Incidents over time</h2>
+                    <span>Last 28 days</span>
+                </div>
+                <div class="threat-chart-container">
+                    <canvas id="seriesChart" aria-label="Incidents over time chart"></canvas>
+                </div>
+            </article>
+            <article class="threat-chart-card">
+                <div class="threat-card-heading">
+                    <h2>Target countries</h2>
+                    <span>28-day total</span>
+                </div>
+                <div class="threat-chart-container">
+                    <canvas id="geoChart" aria-label="Target countries chart"></canvas>
+                </div>
+            </article>
+            <article class="threat-chart-card">
+                <div class="threat-card-heading">
+                    <h2>Threat actors</h2>
+                    <span>All-time activity</span>
+                </div>
+                <div class="threat-chart-container">
+                    <canvas id="actorChart" aria-label="Threat actors chart"></canvas>
+                </div>
+            </article>
+        </section>
+
+        <section class="threat-table-card">
+            <div class="threat-card-heading">
+                <h2>Recent incidents</h2>
+                <span>Latest API records</span>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Incident</th>
+                            <th>Severity</th>
+                            <th>Country</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentBreaches">
+                        <tr>
+                            <td class="empty-state" colspan="4">Loading realtime data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="threat-table-card">
+            <div class="threat-card-heading">
+                <h2>Ransomware leak listings</h2>
+                <span>Recent listings</span>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Group</th>
+                            <th>Victim</th>
+                            <th>Sector</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentLeaks">
+                        <tr>
+                            <td class="empty-state" colspan="4">Loading realtime data...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="{{ url_for('static', filename='js/threats.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Dashboard | ScamShield-AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="dashboard-page">
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <a class="brand" href="{{ url_for('home') }}">
+                <svg class="brand-mark" viewBox="0 0 24 28" aria-hidden="true">
+                    <path d="M12 1.8 21 5v7.1c0 6.1-3.8 10.7-9 13.1-5.2-2.4-9-7-9-13.1V5l9-3.2Z"
+                        fill="none" stroke="currentColor" stroke-width="2.1"/>
+                </svg>
+                <span class="brand-name">ScamShield-AI</span>
+            </a>
+
+            <div class="nav-bot" role="img" aria-label="ShieldBot says hello">
+                <div class="nav-bot-figure" aria-hidden="true">
+                    <span class="nav-bot-antenna"></span>
+                    <span class="nav-bot-head">
+                        <span class="nav-bot-eye"></span>
+                        <span class="nav-bot-eye"></span>
+                        <span class="nav-bot-mouth"></span>
+                    </span>
+                    <span class="nav-bot-body">✓</span>
+                    <span class="nav-bot-hand">✋</span>
+                </div>
+                <p class="nav-bot-message"><strong>Hi!</strong><span>I'm ShieldBot</span></p>
+            </div>
+
+            <div class="side-label">WORKSPACE</div>
+
+            <nav class="side-nav">
+
+                <a class="active" href="{{ url_for('dashboard') }}" data-dashboard-nav>
+                    <span class="side-icon">⌂</span>
+                    Dashboard
+                </a>
+
+                <a href="#scanner" data-open-scanner="url">
+                    <span class="side-icon">↗</span>
+                     Scanner tools
+                </a>
+
+                <a href="{{ url_for('threats') }}">
+                    <span class="side-icon">◷</span>
+                    Realtime data
+                </a>
+
+            </nav>
+
+            <div class="sidebar-note">
+                🛡️ <strong>Stay alert online</strong>
+                <br>
+                Never share passwords, OTPs or banking details
+                with untrusted websites or messages.
+            </div>
+
+        </aside>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard-content">
+
+            <!-- Header -->
+            <header class="dash-top">
+
+                <div>
+                    <h1 id="dashboardTitle">Your security overview</h1>
+                    <p id="dashboardSubtitle">
+                        Analyze suspicious content and review your
+                        recent scan activity.
+                    </p>
+                </div>
+
+                <div class="profile">
+                    <div class="avatar" id="dashboardAvatar">U</div>
+                    <span id="dashboardUserName">Loading...</span>
+                    <button class="dashboard-logout" id="logoutButton" type="button">Log out</button>
+                </div>
+
+            </header>
+
+            <!-- Statistics -->
+            <section class="stats" id="dashboardOverview">
+
+                <article class="glass-card stat">
+                    <div class="stat-icon">↗</div>
+                    <div>
+                        <small>Total scans</small>
+                        <strong id="scanTotalCount">0</strong>
+                    </div>
+                </article>
+
+                <article class="glass-card stat">
+                    <div class="stat-icon">⚠</div>
+                    <div>
+                        <small>Suspicious scans</small>
+                        <strong id="scanSuspiciousCount">0</strong>
+                    </div>
+                </article>
+
+                <article class="glass-card stat">
+                    <div class="stat-icon">✓</div>
+                    <div>
+                        <small>Safe indications</small>
+                        <strong id="scanSafeCount">0</strong>
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- Dashboard Content -->
+            <section class="dashboard-grid scanner-workspace" id="scannerWorkspace" hidden>
+
+                <!-- Scanner -->
+                <article class="glass-card" id="scanner">
+
+                    <div class="card-title">
+                        <h2>✦ Scan for online threats</h2>
+                        <span>Analysis workspace</span>
+                    </div>
+
+                    <div class="scan-tabs" role="tablist" aria-label="Scanner type">
+                        <button class="tab active" type="button" role="tab" aria-selected="true" data-scan-type="url">
+                            ↗ URL Scanner
+                        </button>
+
+                        <button class="tab" type="button" role="tab" aria-selected="false" data-scan-type="message">
+                            ▤ Message Scanner
+                        </button>
+                    </div>
+
+                    <form class="scan-input" id="scanForm">
+
+                        <input
+                            id="scanUrlInput"
+                            type="url"
+                            placeholder="Paste a URL (e.g., https://example.com)"
+                            aria-label="URL to analyze"
+                        >
+
+                        <textarea
+                            id="scanMessageInput"
+                            class="message-input"
+                            placeholder="Enter your message"
+                            aria-label="Message to analyze"
+                            rows="2"
+                            hidden
+                        ></textarea>
+
+                        <button class="btn btn-primary" id="scanSubmit" type="submit">
+                            ⌕ Analyze URL
+                        </button>
+
+                    </form>
+
+                    <p class="helper" id="scanHelper">
+                        Enter a URL to analyze.
+                    </p>
+
+                </article>
+
+                <!-- Scan Activity -->
+                <article class="glass-card" id="analytics">
+
+                    <div class="card-title">
+                        <h2>Scan activity</h2>
+                        <span>Last 7 days</span>
+                    </div>
+
+                    <div class="chart-placeholder" id="scanActivityChart">
+                        <p>No scan activity yet.</p>
+                    </div>
+
+                </article>
+
+                <!-- Recent Scans -->
+                <article class="glass-card history" id="history">
+
+                    <div class="card-title">
+                        <h2>◷ Recent scans</h2>
+                        <span>View history →</span>
+                    </div>
+
+                    <div class="table-wrap">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Input</th>
+                                    <th>Result</th>
+                                    <th>Risk score</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="scanHistoryBody">
+                                <tr>
+                                    <td class="empty-state" colspan="4">No scan records yet.</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <p class="helper">
+                        Scan records will appear here after the scanner is connected.
+                    </p>
+
+                </article>
+
+                <!-- Scan Distribution -->
+                <article class="glass-card">
+
+                    <div class="card-title">
+                        <h2>Scan distribution</h2>
+                        <span>Overview</span>
+                    </div>
+
+                    <div class="distribution" id="scanDistribution">
+                        <p class="empty-state">No scan distribution is available yet.</p>
+
+                    </div>
+
+                    <p class="disclaimer">
+                        Scan results will appear here after the scanner is connected.
+                    </p>
+
+                </article>
+
+            </section>
+
+            <section class="dashboard-info" id="about">
+                <div class="section-heading dashboard-section-heading">
+                    <span class="eyebrow">How it works</span>
+                    <h2>Understand what each scanner checks.</h2>
+                    <p>
+                        ScamShield-AI helps you pause before opening a link or responding
+                        to a suspicious message.
+                    </p>
+                </div>
+
+                <div class="dashboard-info-grid">
+                    <article class="info-card" id="url-scanner-info">
+                        <span class="info-icon">↗</span>
+                        <h3>URL Scanner</h3>
+                        <p>
+                            Review a link for suspicious URL patterns, unusual domains,
+                            unsafe schemes, and other warning signs before visiting it.
+                        </p>
+                    </article>
+
+                    <article class="info-card" id="message-scanner-info">
+                        <span class="info-icon">▤</span>
+                        <h3>Message Scanner</h3>
+                        <p>
+                            Review a message for urgency, impersonation, requests for
+                            sensitive information, and other common scam patterns.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <footer class="dashboard-footer" id="feedback">
+                <div class="dashboard-footer-copy">
+                    <span class="eyebrow">We value your feedback</span>
+                    <h2>Help improve ScamShield-AI.</h2>
+                    <p>
+                        Send feedback, report a problem, or share an idea about safer
+                        online decisions.
+                    </p>
+                    <div class="developer-details">
+                        <span>Developed by</span>
+                        <strong>Aniket Singh</strong>
+                        <a href="https://github.com/aniketsinghh23" target="_blank" rel="noreferrer">
+                            GitHub profile
+                        </a>
+                    </div>
+                </div>
+
+                <form class="dashboard-feedback-form" id="dashboardFeedbackForm">
+                    <label for="dashboardFeedbackEmail">Your email</label>
+                    <input id="dashboardFeedbackEmail" type="email" placeholder="you@example.com" required>
+
+                    <label for="dashboardFeedbackMessage">Your feedback</label>
+                    <textarea id="dashboardFeedbackMessage" rows="4" placeholder="Tell us what you think" required></textarea>
+
+                    <button class="btn btn-primary" type="submit">Send feedback</button>
+                    <p class="feedback-status" id="dashboardFeedbackStatus" role="status" aria-live="polite"></p>
+                </form>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}" defer></script>
+</body>
+</html>

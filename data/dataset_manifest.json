@@ -1,0 +1,21 @@
+{
+  "popular_dataset": "bpali26/popular-websites-across-the-globe",
+  "malicious_dataset": "sid321axn/malicious-urls-dataset",
+  "rows_per_source": 150,
+  "total_rows": 300,
+  "source_counts": {
+    "malicious-urls": 150,
+    "popular-websites": 150
+  },
+  "label_counts": {
+    "safe": 249,
+    "dangerous": 32,
+    "suspicious": 19
+  },
+  "malicious_label_mapping": {
+    "benign": "safe",
+    "phishing": "suspicious",
+    "defacement": "dangerous",
+    "malware": "dangerous"
+  }
+}
