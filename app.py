@@ -40,11 +40,12 @@ from flask_talisman import Talisman
 from sqlalchemy import inspect, text
 from flask_wtf.csrf import CSRFError, CSRFProtect
 
+load_dotenv()
+
 from config import Config
 from database.models import Feedback, Scan, User, db
 
 
-load_dotenv()
 login_manager = LoginManager()
 oauth = OAuth()
 csrf = CSRFProtect()
